@@ -1,0 +1,6 @@
+mutation {
+    createAlbum(input:{name:"First Album", owner:"Someone"}) {
+        id
+        name
+    }
+}
