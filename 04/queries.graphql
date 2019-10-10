@@ -1,6 +1,22 @@
 mutation {
-    createAlbum(input:{name:"First Album", owner:"Someone"}) {
+    createAlbum(input:{name:"First Album"}) {
         id
         name
+    }
+}
+
+mutation {
+    createAlbum(input:{name:"Second Album"}) {
+        id
+        name
+    }
+}
+
+query {
+    listAlbums {
+        items {
+            id
+            name
+        }
     }
 }

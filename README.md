@@ -17,8 +17,7 @@ $ npm install -g @aws-amplify/cli
 ## Step 1: Create React App
 
 ```
-$ npx create-react-app 
-$ photo-albums
+$ npx create-react-app photo-albums
 $ cd photo-albums
 $ npm install --save semantic-ui-react
 ```
@@ -44,7 +43,10 @@ $ amplify init
 ## Step 3: Add Auth
 
 ```
-$ make step3
+
+$ amplify add auth
+$ amplify push
+$ npm install --save aws-amplify aws-amplify-react
 
 ```
 - copy over src/App.js
@@ -53,13 +55,66 @@ $ npm start
 ```
 
 
-## Step 4: Add GraphQL
+## Step 4: Create GraphQL
 
 ```
-amplify add api
+$ amplify add api
 ```
 Copy over schema.graphql
 ```
 $ amplify push
 ```
 
+## Step 5: Add GraphQL to App
+
+```
+$ npm install --save react-router-dom
+```
+- Copy over App.js
+
+```
+$ npm start
+```
+
+## Step 6: Add Storage
+
+```
+$ amplify add storage
+$ amplify push
+$ npm install --save uuid
+```
+- Copy over App.js
+
+```
+$ npm start
+```
+## Step 7: Add Function
+
+```
+$ sam init --runtime nodejs8.10 --name photo_processor
+```
+- create file `photo_processor/src/app.js`, and  `photo_processor/src/package.json`
+- copy over app.js content and package.json
+
+```
+$ cd photo_processor/src
+$ docker run -v "$PWD":/var/task lambci/lambda:build-nodejs8.10 npm install
+$ make makebucket
+$ make createfunction
+```
+- Hop over to the console in Lambda add Trigger
+
+## Step 8: Host website
+
+```
+$ amplify add hosting
+$ amplify publish
+```
+
+## Clean up
+
+```
+$ amplify delete
+```
+- Delete lambda stack
+- Delete all s3 buckets
