@@ -1,4 +1,4 @@
-// src/App.js
+// src/App.js for Step 5
 
 import React, { Component } from 'react';
 

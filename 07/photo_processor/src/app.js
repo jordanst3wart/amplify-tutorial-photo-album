@@ -1,4 +1,4 @@
-// photo_processor/src/app.js
+// photo_processor/src/app.js for Step 7
 const AWS = require('aws-sdk');
 const S3 = new AWS.S3({ signatureVersion: 'v4' });
 // Note: Sharp requires native extensions. To get sharp to install from NPM in a

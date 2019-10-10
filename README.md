@@ -22,10 +22,7 @@ $ cd photo-albums
 $ npm install --save semantic-ui-react
 ```
 - Copy Makefile to /photo-albums
-
-In new terminal
 ```
-$ cd photo-albums
 $ npm start
 ```
 
@@ -93,9 +90,8 @@ $ npm start
 ```
 $ sam init --runtime nodejs8.10 --name photo_processor
 ```
-- create file `photo_processor/src/app.js`, and  `photo_processor/src/package.json`
-- copy over app.js content and package.json
-
+- copy over src/app.js content and src/package.json template.yaml
+- modify and check the constants in the Makefile 
 ```
 $ cd photo_processor/src
 $ docker run -v "$PWD":/var/task lambci/lambda:build-nodejs8.10 npm install
@@ -103,6 +99,7 @@ $ make makebucket
 $ make createfunction
 ```
 - Hop over to the console in Lambda add Trigger
+- Copy over App.js
 
 ## Step 8: Host website
 

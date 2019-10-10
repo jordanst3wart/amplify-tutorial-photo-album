@@ -1,4 +1,4 @@
-// src/App.js
+// src/App.js for Step 3
 
 import React, { Component } from 'react';
 import { Header } from 'semantic-ui-react';
