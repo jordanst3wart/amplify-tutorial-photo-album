@@ -18,11 +18,9 @@ $ npm install -g @aws-amplify/cli
 
 ```
 $ npx create-react-app photo-albums
+$ cp Makefile photo-albums/Makefile
 $ cd photo-albums
 $ npm install --save semantic-ui-react
-```
-- Copy Makefile to /photo-albums
-```
 $ npm start
 ```
 
@@ -34,6 +32,7 @@ Modify src/App.js and see changes
 
 ```
 $ amplify init
+
 ```
 
 
@@ -44,10 +43,7 @@ $ amplify init
 $ amplify add auth
 $ amplify push
 $ npm install --save aws-amplify aws-amplify-react
-
-```
-- copy over src/App.js
-```
+$ cp ../03/App.js src/App.js
 $ npm start
 ```
 
@@ -66,10 +62,7 @@ $ amplify push
 
 ```
 $ npm install --save react-router-dom
-```
-- Copy over App.js
-
-```
+$ cp ../05/App.js src/App.js
 $ npm start
 ```
 
