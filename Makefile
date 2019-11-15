@@ -8,6 +8,9 @@ MY_AWS_USERFILES_S3_BUCKET_ARN=arn:aws:s3:::XX
 MY_DYNAMODB_PHOTOS_TABLE_ARN=arn:aws:dynamodb:us-east-1:XXXX
 REGION=us-east-1
 
+help:   ## Show this help.
+	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/:[^#]*##/ -- /'
+
 .ONESHELL:
 step1:
 	npm install --save semantic-ui-react
@@ -80,5 +83,20 @@ step8:
 .ONESHELL:
 cleanup:
 	amplify delete
+
+check-AWS_PROFILE:
+	@/bin/bash -c "echo Running with AWS_PROFILE=$${AWS_PROFILE:?Need to set AWS_PROFILE}"
+
+shell-docker: check-AWS_PROFILE ## run a shell within the build docker
+	docker run \
+ 		--rm \
+		-e AWS_PROFILE=$(AWS_PROFILE) \
+                -it \
+                -v ~/.aws:/root/.aws \
+                -v $(CURDIR):/app \
+                -w /app \
+                node:10-alpine \
+                /bin/sh
+
 
 .PHONY: step1 step2 step3 step4 step5 step6 step7 step8 makebucket createfunction cleanup
