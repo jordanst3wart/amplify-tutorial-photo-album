@@ -95,7 +95,7 @@ shell-docker: check-AWS_PROFILE ## run a shell within the build docker
                 -v ~/.aws:/root/.aws \
                 -v $(CURDIR):/app \
                 -w /app \
-                node:10-alpine \
+                node:10 \
                 /bin/sh
 
 
